@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7127e0eb571945c0875bce83f22d88fa" Name="Diagram1">
+        <EntityTypeShape EntityType="SMSonlineModel.Emoji" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SMSonlineModel.Friend" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SMSonlineModel.Message" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SMSonlineModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SMSonlineModel.User" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <AssociationConnector Association="SMSonlineModel.FK__Emoji__User_Rece__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="SMSonlineModel.FK__Emoji__User_Send__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="SMSonlineModel.FK__Friend__User_Id__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="SMSonlineModel.FK__Friend__UserFrie__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="SMSonlineModel.FK__Messages__User_I__38996AB5" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
