@@ -36,6 +36,8 @@ namespace Project.Controllers
             return View(friend);
         }
 
+
+
         // GET: Friends/Create
         public ActionResult Create()
         {

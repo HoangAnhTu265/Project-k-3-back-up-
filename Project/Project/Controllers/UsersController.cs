@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using Project.Models;
 using System.Security.Cryptography;
 using System.Text;
+using System.Web.UI;
 
 namespace Project.Controllers
 {
@@ -26,9 +27,10 @@ namespace Project.Controllers
             }
             else
             {
+                ViewBag.error = "Login failed";
                 return RedirectToAction("Login");
             }
-            return View(db.Users.ToList());
+            //return View(db.Users.ToList());
         }
 
         // GET: Users/Details/5
@@ -148,7 +150,8 @@ namespace Project.Controllers
             {
                 var f_password = EncodePassword(password);
                 var data = db.Users.Where(s => s.Email.Equals(email) && s.PassWord.Equals(f_password)).ToList();
-                if (data.Count() > 0)
+                //if (data.Count() > 0)
+                if (data != null)
                 {
                     //add session
                     Session["FullName"] = data.FirstOrDefault().UserName;
@@ -180,8 +183,10 @@ namespace Project.Controllers
                 else
                 {
                     ViewBag.error = "Login failed";
+                    // ScriptManager.RegisterClientScriptBlock(this,this.GetType(), "alertMessage", "alert('Record Inserted Successfully')", true);
                     return RedirectToAction("Login");
                 }
+                
             }
             return View();
         }
