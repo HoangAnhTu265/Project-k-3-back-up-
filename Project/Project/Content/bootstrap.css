@@ -598,7 +598,8 @@ dl {
 
 dt,
 dd {
-  line-height: 1.428571429;
+    line-height: 1.428571429;
+    user-select: none;
 }
 
 dt {
@@ -607,6 +608,7 @@ dt {
 
 dd {
   margin-left: 0;
+  
 }
 
 @media (min-width: 768px) {

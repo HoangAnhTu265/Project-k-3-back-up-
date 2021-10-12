@@ -10,36 +10,33 @@ using Project.Models;
 
 namespace Project.Controllers
 {
-    public class FriendsController : Controller
+    public class Friends1Controller : Controller
     {
         private SMSonlineEntities db = new SMSonlineEntities();
 
-        // GET: Friends
+        // GET: Friends1
         public ActionResult Index()
         {
-            //var user = db.Friends.Include(f => f.User).Include(f => f.User1);
-            var user = db.Users.ToList();
-            return View(user);
+            var friends = db.Friends.Include(f => f.User).Include(f => f.User1);
+            return View(friends.ToList());
         }
 
-        // GET: Friends/Details/5
+        // GET: Friends1/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
-            if (user == null)
+            Friend friend = db.Friends.Find(id);
+            if (friend == null)
             {
                 return HttpNotFound();
             }
-            return View(user);
+            return View(friend);
         }
 
-
-
-        // GET: Friends/Create
+        // GET: Friends1/Create
         public ActionResult Create()
         {
             ViewBag.User_Id = new SelectList(db.Users, "User_Id", "UserName");
@@ -47,9 +44,9 @@ namespace Project.Controllers
             return View();
         }
 
-        // POST: Friends/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Friends1/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Friend_Id,FriendName,UserFriend_Id,User_Id")] Friend friend)
@@ -66,7 +63,7 @@ namespace Project.Controllers
             return View(friend);
         }
 
-        // GET: Friends/Edit/5
+        // GET: Friends1/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -83,9 +80,9 @@ namespace Project.Controllers
             return View(friend);
         }
 
-        // POST: Friends/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Friends1/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Friend_Id,FriendName,UserFriend_Id,User_Id")] Friend friend)
@@ -101,7 +98,7 @@ namespace Project.Controllers
             return View(friend);
         }
 
-        // GET: Friends/Delete/5
+        // GET: Friends1/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -116,7 +113,7 @@ namespace Project.Controllers
             return View(friend);
         }
 
-        // POST: Friends/Delete/5
+        // POST: Friends1/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

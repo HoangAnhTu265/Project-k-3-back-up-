@@ -1,5 +1,6 @@
-﻿@model Project.Models.Friend
-
+﻿@*@model Project.Models.Friend*@
+@*@model IEnumerable<Project.Models.User>*@
+@model Project.Models.User
 @{
     ViewBag.Title = "Details";
 }
@@ -11,32 +12,60 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.FriendName)
+            @Html.DisplayNameFor(model => model.UserName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FriendName)
+            @Html.DisplayFor(model => model.UserName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.User.UserName)
+            @Html.DisplayNameFor(model => model.DOB)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.User.UserName)
+            @Html.DisplayFor(model => model.DOB)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.User1.UserName)
+            @Html.DisplayNameFor(model => model.Gender)
         </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.User1.UserName)
-        </dd>
+        @if (Model.Gender == true)
+        {
+            <dd>
+                Male
+            </dd>
+        }
+        else
+        {
+            <dd>
+                Female
+            </dd>
+        }
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkStatus)
+        </dt>
+
+        @if (Model.WorkStatus == true)
+        {
+            <dd>
+                Students
+            </dd>
+        }
+        else
+        {
+            <dd>
+                Employees
+            </dd>
+        }
+
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Friend_Id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.User_Id}) |
     @Html.ActionLink("Back to List", "Index")
 </p>

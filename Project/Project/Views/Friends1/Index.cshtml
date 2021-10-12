@@ -1,4 +1,4 @@
-﻿@*@model IEnumerable<Project.Models.Friend>*@
+﻿@model IEnumerable<Project.Models.Friend>
 @model IEnumerable<Project.Models.User>
 @{
     ViewBag.Title = "Index";
@@ -6,16 +6,14 @@
 
 <h2>Index</h2>
 
-@{
-    Layout = "~/Views/Shared/_LayoutUser.cshtml";
-}
-
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
-       
+        <th>
+            @Html.DisplayNameFor(model => model.User_Id)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.UserName)
         </th>
@@ -28,29 +26,30 @@
     @foreach (var item in Model)
     {
         <tr>
-            
+            <td>
+                @Html.DisplayFor(modelItem => item.User_Id)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.UserName)
             </td>
             @if (item.Gender == true)
             {
                 <td>
-                    Male
+                    @*@Html.DisplayFor(modelItem => item.Gender)*@ Male
                 </td>
+
             }
             else
             {
-                <td>
-                    Female
-                </td>
+                <td> Female </td>
             }
 
-        <td>
-            @Html.ActionLink("Add Friend", "Edit", new { id = item.User_Id }) |
-            @Html.ActionLink("Like", "Details", new { id = item.User_Id }) |
-            @Html.ActionLink("Dislike", "Delete", new { id = item.User_Id }) |
-            @Html.ActionLink("Details", "Details", new { id = item.User_Id })
-        </td>
+            <td>
+                @Html.ActionLink("Add Friend", "Edit", new { id = item.User_Id }) |
+                @Html.ActionLink("Like", "Details", new { id = item.User_Id }) |
+                @Html.ActionLink("Dislike", "Delete", new { id = item.User_Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.User_Id })
+            </td>
         </tr>
     }
 

@@ -8,7 +8,7 @@
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Home Page</h2>
 
 <script>
     alert("đăng nhập thành công")
@@ -24,15 +24,16 @@
                 @if (Session["FullName"] != null)
                 {
                     <p>Name: @Session["FullName"].ToString()</p>
-                    <p>Gender: @Session["Gender"].ToString()</p>
+                    @*<p>Gender: @Session["Gender"].ToString()</p>
                     <p>WorkStatus: @Session["WorkStatus"].ToString()</p>
                     <p>Email: @Session["Email"].ToString()</p>
                     <p>Address: @Session["Address"].ToString()</p>
-                    <p>DOB: @Session["DOB"].ToString()</p>
-                    <a href="@Url.Action("Logout","Users")" class="btn btn-warning">Logout</a>
+                    <p>DOB: @Session["DOB"].ToString()</p>*@
                 }
+
             </div>
         </div>
+        <a href="@Url.Action("Logout","Users")" class="btn btn-warning">Logout</a>
     </div>
 </div>
 
