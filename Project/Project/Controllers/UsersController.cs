@@ -178,6 +178,9 @@ namespace Project.Controllers
                     Session["Address"] = data.FirstOrDefault().Address;
                     Session["DOB"] = data.FirstOrDefault().DOB;
                     Session["UserID"] = data.FirstOrDefault().User_Id;
+
+                    //thông báo
+                    
                     return RedirectToAction("Index");
                 }
                 else
@@ -186,6 +189,8 @@ namespace Project.Controllers
                     // ScriptManager.RegisterClientScriptBlock(this,this.GetType(), "alertMessage", "alert('Record Inserted Successfully')", true);
                     return RedirectToAction("Login");
                 }
+
+              
                 
             }
             return View();
