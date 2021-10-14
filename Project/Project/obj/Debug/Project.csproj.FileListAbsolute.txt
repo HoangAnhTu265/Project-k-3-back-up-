@@ -66,6 +66,5 @@ C:\Users\Admin\Desktop\Project kỳ 3(back up)\Project\Project\bin\Microsoft.Owi
 C:\Users\Admin\Desktop\Project kỳ 3(back up)\Project\Project\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Admin\Desktop\Project kỳ 3(back up)\Project\Project\obj\Debug\Project.dll
 C:\Users\Admin\Desktop\Project kỳ 3(back up)\Project\Project\obj\Debug\Project.pdb
-C:\Users\Admin\Desktop\Project kỳ 3(back up)\Project\Project\obj\Debug\Project.csprojAssemblyReference.cache
 C:\Users\Admin\Desktop\Project kỳ 3(back up)\Project\Project\obj\Debug\Project.csproj.CoreCompileInputs.cache
 C:\Users\Admin\Desktop\Project kỳ 3(back up)\Project\Project\obj\Debug\Project.csproj.CopyComplete

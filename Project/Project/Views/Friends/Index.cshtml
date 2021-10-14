@@ -1,5 +1,7 @@
 ﻿@*@model IEnumerable<Project.Models.Friend>*@
 @model IEnumerable<Project.Models.User>
+
+
 @{
     ViewBag.Title = "Index";
 }
@@ -15,7 +17,7 @@
 </p>
 <table class="table">
     <tr>
-       
+
         <th>
             @Html.DisplayNameFor(model => model.UserName)
         </th>
@@ -28,7 +30,7 @@
     @foreach (var item in Model)
     {
         <tr>
-            
+
             <td>
                 @Html.DisplayFor(modelItem => item.UserName)
             </td>
@@ -45,13 +47,58 @@
                 </td>
             }
 
-        <td>
-            @Html.ActionLink("Add Friend", "Edit", new { id = item.User_Id }) |
-            @Html.ActionLink("Like", "Details", new { id = item.User_Id }) |
-            @Html.ActionLink("Dislike", "Delete", new { id = item.User_Id }) |
-            @Html.ActionLink("Details", "Details", new { id = item.User_Id })
-        </td>
+            <td>
+                @*<form method="post" action="Like4">*@
+                    @*@Html.ActionLink("Add Friend", "Edit", new { id = item.User_Id }) |*@
+                    <input type="submit" value="Add Friend" />
+                    @*@Html.ActionLink("Like", "Like", new { id = item.User_Id }) |
+                        @Html.ActionLink("Dislike", "Dislike", new { id = item.User_Id }) |*@
+                    @*Like <input type="radio" name="group1" /> |
+                        Dislike <input type="radio" name="group1" />*@
+
+                    @*Like @Html.RadioButton("YourRadioButton", "A")
+                        Dislike @Html.RadioButton("YourRadioButton", "B")*@
+                    <button onclick="emoji2(@item.User_Id,1)">Like</button>
+                    <button onclick="emoji2(@item.User_Id,0)">Dislike</button>
+                    @Html.ActionLink("Details", "Details", new { id = item.User_Id })
+                @*</form>*@
+            </td>
+
         </tr>
     }
 
 </table>
+<input type="text" value="abc" id="txtTest" />
+<script>
+
+    //   function emoji(userEmoji) {
+
+    //      /* alert("đã like: " + userEmoji);*/
+    //       /*var x = $("#txtTest").val();*/
+    //       var url2 = url + "?a=" + userEmoji;
+    ///*       idUserLike, int idLiked, int Status*/
+    //       var url4 = url + "?a=" + userEmoji + "&idUserLike=" + "&";
+    //       $.post(url,
+    //           {
+    //               /*a = userEmoji */
+    //           },
+    //           function (data, status) {
+    //               alert("Data: " + data + "\nStatus: " + status);
+    //           });
+    //   }
+    var url = "/Friends/Like4";
+    function emoji2(idLiked, Status) {
+        /*  var url2 = url + "?a=" + userEmoji;*/
+        /*idUserLike, int idLiked, int Status*/
+        var url4 = url + "?a=" + 100 + "&idLiked=" + idLiked + "&Status=" + Status;
+        alert(url4);
+        $.post(url4,
+            {
+                
+            },
+            function (data, status) {
+                alert("Data: " + data + "\nStatus: " + status);
+            });
+    }
+
+</script>

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -13,7 +15,7 @@ namespace Project.Controllers
     public class FriendsController : Controller
     {
         private SMSonlineEntities db = new SMSonlineEntities();
-
+        String sql_con = @"Data Source=ADMIN\SQLEXPRESS;Initial Catalog=SMSonline;Integrated Security=True";
         // GET: Friends
         public ActionResult Index()
         {
@@ -21,6 +23,106 @@ namespace Project.Controllers
             var user = db.Users.ToList();
             return View(user);
         }
+
+        SqlConnection con;
+
+        [HttpPost]
+        public ActionResult Like(User obj,Friend fr, int? id, string YourRadioButton)
+        {
+            bool emp = true;
+
+            con = new SqlConnection(sql_con);
+
+            String sql = "insert into Emoji values(@Sender, @Receiver, @Status)";
+
+            YourRadioButton = Request.Form["YourRadioButton"];
+            
+            if(YourRadioButton == "A")
+            {
+                emp = true;
+            } else if(YourRadioButton == "B")
+            {
+                emp = false;
+            }
+            User user = db.Users.Find(id);
+            Friend friend = db.Friends.Find(id);
+
+            int userId = db.Friends.Find(id).User.User_Id;
+
+            SqlCommand command = new SqlCommand(sql, con);
+            command.Parameters.AddWithValue("@Sender", userId);
+            command.Parameters.AddWithValue("@Receiver", id);
+            command.Parameters.AddWithValue("@Status", emp);
+
+            con.Open();
+            command.ExecuteNonQuery();
+            con.Close();
+
+            return View();
+        }
+
+
+        [HttpPost]
+        public String Like2()
+        {
+            int abc = 0;
+            return "abc";
+        }
+
+        [HttpPost]
+        public String Like3(string a)
+        {
+            string b = a;
+            int abc = 0;
+            return "abc";
+        }
+
+        [HttpPost]
+        public String Like4(int idLiked,int Status)
+        {
+            //string b = a;
+            //int abc = 0;
+
+            //bool emp = true;
+
+            con = new SqlConnection(sql_con);
+
+            String sql = "insert into Emoji values(@Sender, @Receiver, @Status)";
+
+            //User user = db.Users.Find(id);
+            //Friend friend = db.Friends.Find(id);
+
+            //int userId = db.Friends.Find(id).User.User_Id;
+            var a = Session["UserID"];
+
+            SqlCommand command = new SqlCommand(sql, con);
+            command.Parameters.AddWithValue("@Sender",a);
+            command.Parameters.AddWithValue("@Receiver", idLiked);
+            command.Parameters.AddWithValue("@Status", Status);
+
+            con.Open();
+            command.ExecuteNonQuery();
+            con.Close();
+
+            return "abc";
+        }
+        //public ActionResult Dislike(Emoji obj)
+        //{
+        //    con = new SqlConnection(sql_con);
+
+        //    String sql = "insert into Emoji values(@Sender, @Receiver, @Status)";
+
+        //    SqlCommand command = new SqlCommand(sql, con);
+        //    command.Parameters.AddWithValue("@Sender", obj.User.UserName);
+        //    command.Parameters.AddWithValue("@Receiver", obj.User1.UserName);
+        //    command.Parameters.AddWithValue("@Status", true);
+
+        //    con.Open();
+        //    command.ExecuteNonQuery();
+        //    con.Close();
+
+        //    return View();
+        //}
 
         // GET: Friends/Details/5
         public ActionResult Details(int? id)
